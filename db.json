@@ -1,0 +1,38 @@
+{
+  "trainers": [
+    {
+      "id": "1",
+      "name": "Ash Ketchum",
+      "region": "Kanto",
+      "team": [
+        "pikachu",
+        "charizard"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Misty",
+      "region": "Kanto",
+      "team": [
+        "staryu",
+        "moltres"
+      ]
+    },
+    {
+      "id": "a204",
+      "name": "Cristian",
+      "region": "Hoenn",
+      "team": [
+        "weepinbell"
+      ]
+    },
+    {
+      "id": "a2e0",
+      "name": "Kiara",
+      "region": "Kanto",
+      "team": [
+        "psyduck"
+      ]
+    }
+  ]
+}
