@@ -1,37 +1,47 @@
 // src/auth/AuthProvider.jsx
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AuthContext } from "./AuthContext";
-
-const fakeUsers = [
-  { username: "admin", password: "1234", role: "admin" },
-  { username: "ash", password: "pikachu", role: "trainer" },
-];
+import {
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
+import { auth } from "../firebase";
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(() => {
-    const storedUser = localStorage.getItem("user");
-    return storedUser ? JSON.parse(storedUser) : null;
-  });
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const login = ({ username, password }) => {
-    const found = fakeUsers.find(
-      (u) => u.username === username && u.password === password
-    );
-    if (found) {
-      setUser(found);
-      localStorage.setItem("user", JSON.stringify(found));
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      if (firebaseUser) {
+        setUser({ email: firebaseUser.email });
+      } else {
+        setUser(null);
+      }
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const login = async ({ username, password }) => {
+    try {
+      await signInWithEmailAndPassword(auth, username, password);
       return true;
+    } catch (error) {
+      console.error("Error al iniciar sesión:", error);
+      return false;
     }
-    return false;
   };
 
-  const logout = () => {
+  const logout = async () => {
+    await signOut(auth);
     setUser(null);
-    localStorage.removeItem("user");
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, loading }}>
       {children}
     </AuthContext.Provider>
   );
