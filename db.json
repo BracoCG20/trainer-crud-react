@@ -10,28 +10,27 @@
       ]
     },
     {
-      "id": "2",
-      "name": "Misty",
-      "region": "Kanto",
-      "team": [
-        "staryu",
-        "moltres"
-      ]
-    },
-    {
-      "id": "a204",
+      "id": "7559",
       "name": "Cristian",
       "region": "Hoenn",
       "team": [
-        "weepinbell"
+        "blastoise",
+        "nidoking",
+        "alakazam",
+        "golduck",
+        "vileplume",
+        "arcanine"
       ]
     },
     {
-      "id": "a2e0",
-      "name": "Kiara",
+      "id": "7267",
+      "name": "Mateo",
       "region": "Kanto",
       "team": [
-        "psyduck"
+        "pidgey",
+        "wigglytuff",
+        "weepinbell",
+        "mankey"
       ]
     }
   ]
