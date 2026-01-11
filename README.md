@@ -2,6 +2,7 @@
 # trainer-crud-react
 =======
 # React + Vite
+Reaconstruccion proyecto
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
